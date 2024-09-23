@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Videos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        function agregarFecha() {
+            const fechaContainer = document.getElementById('fechasContainer');
+            const nuevaFechaDiv = document.createElement('div');
+            nuevaFechaDiv.className = 'form-group mt-2';
+            nuevaFechaDiv.innerHTML = `
+                <input type="date" class="form-control" name="fechaTentativa[]" required>
+                <button type="button" class="btn btn-danger mt-2" onclick="removerFecha(this)">Eliminar</button>
+            `;
+            fechaContainer.appendChild(nuevaFechaDiv);
+        }
+
+        function removerFecha(button) {
+            button.parentElement.remove();
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Solicitud de Videos</h2>
+        <form action="submit_video_request.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="area">Área</label>
+                <select class="form-control" id="area" name="area" required>
+                    <option value="admisiones">Admisiones</option>
+                    <option value="bienestar_estudiantil">Bienestar Estudiantil</option>
+                    <option value="postgrado">Postgrado</option>
+                    <option value="academico">Académico</option>
+                    <option value="vicerrectorado">Vicerrectorado</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="fechasTentativas">Fechas Tentativas de Grabación</label>
+                <div id="fechasContainer">
+                    <input type="date" class="form-control" name="fechaTentativa[]" required>
+                    <input type="date" class="form-control mt-2" name="fechaTentativa[]" required>
+                </div>
+                <button type="button" class="btn btn-secondary mt-2" onclick="agregarFecha()">Agregar Otra Fecha</button>
+            </div>
+
+            <div class="form-group">
+                <label for="formato">Formato</label>
+                <select class="form-control" id="formato" name="formato" required>
+                    <option value="vertical">Vertical</option>
+                    <option value="horizontal">Horizontal</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="fechaEntrega">Fecha de Entrega</label>
+                <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
+            </div>
+
+            <div class="form-group">
+                <label for="requerimientos">Requerimientos</label>
+                <textarea class="form-control" id="requerimientos" name="requerimientos" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="imagenes">Inserción de Imágenes</label>
+                <input type="file" class="form-control" id="imagenes" name="imagenes[]" accept="image/*" multiple>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
