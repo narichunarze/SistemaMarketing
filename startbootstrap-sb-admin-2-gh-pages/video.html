@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solicitud de Videos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .section-divider {
+            background-color: #CED9EE; 
+            padding: 20px; 
+            margin-top: 20px; 
+            border-radius: 5px;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 15px; 
+        }
+    </style>
     <script>
         function agregarFecha() {
             const fechaContainer = document.getElementById('fechasContainer');
@@ -46,30 +58,35 @@
                 <button type="button" class="btn btn-secondary mt-2" onclick="agregarFecha()">Agregar Otra Fecha</button>
             </div>
 
-            <div class="form-group">
-                <label for="formato">Formato</label>
-                <select class="form-control" id="formato" name="formato" required>
-                    <option value="vertical">Vertical</option>
-                    <option value="horizontal">Horizontal</option>
-                </select>
+            <!-- Nueva sección con color de fondo específico -->
+            <div class="section-divider">
+                <div class="section-title">Detalles del Video</div> <!-- Título para la nueva sección -->
+
+                <div class="form-group">
+                    <label for="formato">Formato</label>
+                    <select class="form-control" id="formato" name="formato" required>
+                        <option value="vertical">Vertical</option>
+                        <option value="horizontal">Horizontal</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fechaEntrega">Fecha de Entrega</label>
+                    <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="requerimientos">Requerimientos</label>
+                    <textarea class="form-control" id="requerimientos" name="requerimientos" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="imagenes">Inserción de Imágenes</label>
+                    <input type="file" class="form-control" id="imagenes" name="imagenes[]" accept="image/*" multiple>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="fechaEntrega">Fecha de Entrega</label>
-                <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
-            </div>
-
-            <div class="form-group">
-                <label for="requerimientos">Requerimientos</label>
-                <textarea class="form-control" id="requerimientos" name="requerimientos" rows="3" required></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="imagenes">Inserción de Imágenes</label>
-                <input type="file" class="form-control" id="imagenes" name="imagenes[]" accept="image/*" multiple>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+            <button type="submit" class="btn btn-primary mt-4">Enviar Solicitud</button>
         </form>
     </div>
 

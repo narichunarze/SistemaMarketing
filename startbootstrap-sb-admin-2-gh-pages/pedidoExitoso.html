@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Exitoso</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Estilos personalizados para la página de éxito -->
+    <style>
+        body {
+            background: linear-gradient(90deg, rgba(4,11,55) 0%, rgba(24, 50, 124) 50%, rgba(4,11,55) 100%);
+        }
+
+        .container {
+            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            border-radius: 1rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            text-align: center;
+            padding: 30px;
+            background-color: #ffffff;
+        }
+
+        .success-icon {
+            font-size: 80px;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        .success-message {
+            font-size: 24px;
+            font-weight: bold;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
+        .order-details {
+            font-size: 16px;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+
+        .order-number {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card o-hidden border-0 shadow-lg">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="success-message">
+                ¡Pedido Realizado con Éxito!
+            </div>
+            <div class="order-details">
+                <p>Tu pedido ha sido confirmado y se está procesando.</p>
+                <p>Puede verlo en: </p>
+                <a href="pedidosUser.html" class="btn btn-primary btn-user btn-block">Mis pedidos</a>
+            </div>
+            <div>
+                <a href="index.html" class="btn btn-primary btn-user btn-block">Volver al Inicio</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+</body>
+
+</html>

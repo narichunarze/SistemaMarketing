@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Solicitudes de Artes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Gestión de Solicitudes de Artes</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Fecha de Solicitud</th>
+                    <th>Fecha Límite</th>
+                    <th>Estado</th>
+                    <th>Solicitante</th>
+                    <th>Comentarios</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="artRequestsTable">
+                <tr>
+                    <td>001</td>
+                    <td>Obra Maestra</td>
+                    <td>Descripción de la obra maestra.</td>
+                    <td>2024-09-01</td>
+                    <td>2024-10-01</td>
+                    <td>Pendiente</td>
+                    <td>Juan Pérez</td>
+                    <td>No hay comentarios</td>
+                    <td><button class="btn btn-info" onclick="viewDetails('001', 'Obra Maestra', 'Descripción de la obra maestra.', '2024-09-01', '2024-10-01', 'Pendiente', 'Juan Pérez')">Ver Detalles</button></td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>Arte Contemporáneo</td>
+                    <td>Descripción del arte contemporáneo.</td>
+                    <td>2024-09-05</td>
+                    <td>2024-11-01</td>
+                    <td>En Progreso</td>
+                    <td>María Gómez</td>
+                    <td>No hay comentarios</td>
+                    <td><button class="btn btn-info" onclick="viewDetails('002', 'Arte Contemporáneo', 'Descripción del arte contemporáneo.', '2024-09-05', '2024-11-01', 'En Progreso', 'María Gómez')">Ver Detalles</button></td>
+                </tr>
+                <!-- Agregar más filas de solicitudes aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal para ver detalles de la solicitud -->
+    <div class="modal" id="detailsModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Detalles de Solicitud de Artes</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>ID:</strong> <span id="requestId"></span></p>
+                    <p><strong>Título:</strong> <span id="requestTitle"></span></p>
+                    <p><strong>Descripción:</strong> <span id="requestDescription"></span></p>
+                    <p><strong>Fecha de Solicitud:</strong> <span id="requestDate"></span></p>
+                    <p><strong>Fecha Límite:</strong> <span id="requestDeadline"></span></p>
+                    <p><strong>Estado:</strong> <span id="requestStatus"></span></p>
+                    <p><strong>Solicitante:</strong> <span id="requestRequester"></span></p>
+                    <p><strong>Comentarios:</strong></p>
+                    <div id="commentsContainer"></div>
+                    <textarea class="form-control mt-2" placeholder="Agregar un comentario..." id="adminComment"></textarea>
+                    <input type="file" class="form-control mt-2" id="adminFile" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="submitResponse()">Responder</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function viewDetails(id, title, description, date, deadline, status, requester) {
+            document.getElementById('requestId').innerText = id;
+            document.getElementById('requestTitle').innerText = title;
+            document.getElementById('requestDescription').innerText = description;
+            document.getElementById('requestDate').innerText = date;
+            document.getElementById('requestDeadline').innerText = deadline;
+            document.getElementById('requestStatus').innerText = status;
+            document.getElementById('requestRequester').innerText = requester;
+            $('#detailsModal').modal('show');
+        }
+
+        function submitResponse() {
+            const comment = document.getElementById('adminComment').value;
+            const fileInput = document.getElementById('adminFile');
+            const file = fileInput.files[0];
+
+            // Aquí puedes manejar la lógica para enviar el comentario y archivo al servidor
+            console.log("Comentario:", comment);
+            console.log("Archivo:", file ? file.name : "No se seleccionó archivo");
+
+            // Cerrar el modal
+            $('#detailsModal').modal('hide');
+
+            // Limpiar los campos
+            document.getElementById('adminComment').value = '';
+            fileInput.value = '';
+        }
+    </script>
+</body>
+
+</html>

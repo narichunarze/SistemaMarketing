@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solicitud de Artes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        .section-divider {
+            background-color: #CED9EE; 
+            padding: 20px; 
+            margin-top: 20px; 
+            border-radius: 5px; 
+        }
+        .section-title {
+            font-weight: bold; 
+            margin-bottom: 15px; 
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
@@ -39,40 +52,45 @@
                 <input type="text" class="form-control" id="titulo" name="titulo" required>
             </div>
 
-            <div class="form-group">
-                <label for="fechaEvento">Fecha</label>
-                <input type="date" class="form-control" id="fecha" name="fecha" required>
+            <!-- Nueva sección con color de fondo específico -->
+            <div class="section-divider">
+                <div class="section-title">Detalles del Arte</div> <!-- Título para la nueva sección -->
+                
+                <div class="form-group">
+                    <label for="fechaEvento">Fecha</label>
+                    <input type="date" class="form-control" id="fecha" name="fecha" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="hora">Hora</label>
+                    <input type="time" class="form-control" id="hora" name="hora" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ubicacion">Ubicación</label>
+                    <input type="text" class="form-control" id="ubicacion" name="ubicacion" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipoPost">Tipo de Post</label>
+                    <select class="form-control" id="tipoPost" name="tipoPost" required>
+                        <option value="historia">Historia</option>
+                        <option value="post">Post</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="referenciasVisuales">Referencias Visuales</label>
+                    <input type="file" class="form-control" id="referenciasVisuales" name="referenciasVisuales" accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label for="comentarios">Comentarios</label>
+                    <textarea class="form-control" id="comentarios" name="comentarios" rows="3"></textarea>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="hora">Hora</label>
-                <input type="time" class="form-control" id="hora" name="hora" required>
-            </div>
-
-            <div class="form-group">
-                <label for="ubicacion">Ubicación</label>
-                <input type="text" class="form-control" id="ubicacion" name="ubicacion" required>
-            </div>
-
-            <div class="form-group">
-                <label for="tipoPost">Tipo de Post</label>
-                <select class="form-control" id="tipoPost" name="tipoPost" required>
-                    <option value="historia">Historia</option>
-                    <option value="post">Post</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="referenciasVisuales">Referencias Visuales</label>
-                <input type="file" class="form-control" id="referenciasVisuales" name="referenciasVisuales" accept="image/*">
-            </div>
-
-            <div class="form-group">
-                <label for="comentarios">Comentarios</label>
-                <textarea class="form-control" id="comentarios" name="comentarios" rows="3"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+            <button type="submit" class="btn btn-primary mt-4">Enviar Solicitud</button>
         </form>
     </div>
 
