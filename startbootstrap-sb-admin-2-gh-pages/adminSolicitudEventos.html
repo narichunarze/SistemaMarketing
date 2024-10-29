@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Cobertura de Eventos UPB</title>
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fefefe; /* Color de fondo de la pantalla */
+        }
+
+        .card {
+            border: none; /* Eliminar borde predeterminado */
+            border-top: 5px solid; /* Borde superior de 5px */
+            border-radius: 0.5rem; /* Bordes redondeados */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
+        }
+
+        .text-black {
+            color: black; /* Define una clase para el texto negro */
+        }
+
+        .card-header {
+            background-color: #f8f9fa; /* Color de fondo del encabezado de la tarjeta */
+        }
+
+        h1 {
+            color: #020E5C; /* Color del título */
+            font-weight: 800; /* Hacer el texto más grueso */
+        }
+
+        .content-container {
+            background-color: #CED9EE; /* Color del fondo después del título */
+            padding: 20px; /* Espaciado interno */
+            border-radius: 0.5rem; /* Bordes redondeados para el contenedor */
+        }
+
+        .form-group {
+            margin-bottom: 15px; /* Espaciado entre campos del formulario */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">SOLICITUD DE COBERTURA DE EVENTOS UPB</h1> <!-- Título de la página -->
+        <br>
+        <div class="content-container"> <!-- Contenedor con el color de fondo deseado -->
+            <div class="accordion" id="eventCoverageAccordion">
+                <!-- Las solicitudes de cobertura de eventos se insertarán aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery y Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Datos de ejemplo para las solicitudes de cobertura de eventos
+        const eventCoverageRequests = [
+            {
+                info: "Cobertura de la Feria de Bienestar Estudiantil",
+                area: "Bienestar Estudiantil",
+                title: "Feria de Bienestar Estudiantil 2024",
+                eventDate: "2024-11-10",
+                eventTime: "10:00 AM",
+                location: "Auditorio Principal, UPB",
+                additionalInfo: "Tomar fotos de todos los stands y actividades interactivas.",
+                borderClass: "border-primary", // Clase de borde
+            },
+            {
+                info: "Cobertura del Taller de Innovación",
+                area: "Académico",
+                title: "Taller de Innovación y Creatividad",
+                eventDate: "2024-11-15",
+                eventTime: "02:00 PM",
+                location: "Sala de Conferencias, UPB",
+                additionalInfo: "Capturar momentos clave durante las actividades grupales.",
+                borderClass: "border-success", // Clase de borde
+            },
+            {
+                info: "Cobertura del Encuentro de Postgrado",
+                area: "Postgrado",
+                title: "Encuentro de Estudiantes de Postgrado",
+                eventDate: "2024-11-20",
+                eventTime: "09:00 AM",
+                location: "Salón VIP, UPB",
+                additionalInfo: "Realizar entrevistas a los ponentes y participantes.",
+                borderClass: "border-warning", // Clase de borde
+            },
+        ];
+
+        // Función para renderizar el accordion de solicitudes de cobertura de eventos
+        function renderEventCoverageRequests() {
+            const container = document.getElementById("eventCoverageAccordion");
+            eventCoverageRequests.forEach((request, index) => {
+                const card = document.createElement("div");
+                card.className = `card mb-3 ${request.borderClass}`; // Aplicar clase de borde
+                card.innerHTML = `
+                    <div class="card-header" id="heading${index}">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left text-black" type="button" data-toggle="collapse" data-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <span class="h5 font-weight-bold">${request.title}</span>
+                                    <i class="fas fa-chevron-down ml-2 text-gray-300"></i>
+                                </div>
+                            </button>
+                        </h2>
+                    </div>
+                    
+                    <div id="collapse${index}" class="collapse" aria-labelledby="heading${index}" data-parent="#eventCoverageAccordion">
+                        <div class="card-body">
+                            <p><strong>Información:</strong> ${request.info}</p>
+                            <p><strong>Área:</strong> ${request.area}</p>
+                            <p><strong>Fecha del Evento:</strong> ${request.eventDate}</p>
+                            <p><strong>Hora:</strong> ${request.eventTime}</p>
+                            <p><strong>Ubicación:</strong> ${request.location}</p>
+                            <p><strong>Información Adicional:</strong> ${request.additionalInfo}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Renderizar las cards desplegables cuando se carga la página
+        window.onload = renderEventCoverageRequests;
+    </script>
+</body>
+</html>
