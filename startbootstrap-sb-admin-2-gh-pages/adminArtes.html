@@ -1,194 +1,168 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Solicitudes de Artes</title>
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Artes</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
         body {
-            background-color: #fefefe; /* Color de fondo de la pantalla */
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #f0f4ff, #ffffff);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
-
-        .card {
-            border: none; /* Eliminar borde predeterminado */
-            border-top: 5px solid; /* Borde superior de 5px */
-            border-radius: 0.5rem; /* Bordes redondeados */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
-        }
-
-        .text-black {
-            color: black; /* Define una clase para el texto negro */
-        }
-
-        .card-header {
-            background-color: #f8f9fa; /* Color de fondo del encabezado de la tarjeta */
-        }
-
         h1 {
-            color: #020E5C; /* Color del título */
-            font-weight: 100%; /* Hacer el texto más grueso */
+            font-weight: 700;
+            color: #002d62;
+            text-align: center;
+            margin-bottom: 20px;
         }
-
-        .content-container {
-            background-color: #CED9EE; /* Color del fondo después del título */
-            padding: 20px; /* Espaciado interno */
-            border-radius: 0.5rem; /* Bordes redondeados para el contenedor */
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            font-weight: bold;
+            color: #2e5bff;
+            cursor: pointer;
+        }
+        .card-header i {
+            margin-right: 10px;
+        }
+        .card-content {
+            padding: 15px;
+            color: #333;
+            border-top: 1px solid #e0e0e0;
+            display: none; /* Inicialmente oculto */
+        }
+        .card.expanded .card-content {
+            display: block; /* Muestra el contenido si la tarjeta está expandida */
+        }
+        .field {
+            margin-bottom: 10px;
+        }
+        .field label {
+            font-weight: bold;
+            color: #333;
+        }
+        .comments {
+            margin-top: 10px;
+        }
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+        .btn-send {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+        }
+        .btn-send:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center">SOLICITUDES DE ARTES UPB</h1> <!-- Título de la página -->
-        <br>
-        <div class="content-container"> <!-- Contenedor con el color de fondo deseado -->
-            <div class="accordion" id="artRequestsAccordion">
-                <!-- Las solicitudes de arte se insertarán aquí dinámicamente -->
+    <h1>Solicitud de Artes</h1>
+    <div class="container">
+        <div class="card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <i class="fas fa-paint-brush"></i> Detalles de la Solicitud
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="card-content">
+                <div class="field">
+                    <label>Tipo de Solicitud:</label>
+                    <p>Interno</p>
+                </div>
+                <div class="field">
+                    <label>Fecha de Entrega:</label>
+                    <p>2024-11-15</p>
+                </div>
+                <div class="field">
+                    <label>Área:</label>
+                    <p>Admisiones</p>
+                </div>
+                <div class="field">
+                    <label>Título:</label>
+                    <p>Diseño de Poster para Evento</p>
+                </div>
+                <div class="field">
+                    <label>Fecha:</label>
+                    <p>2024-11-01</p>
+                </div>
+                <div class="field">
+                    <label>Hora:</label>
+                    <p>10:00 AM</p>
+                </div>
+                <div class="field">
+                    <label>Ubicación:</label>
+                    <p>Aula Magna</p>
+                </div>
+                <div class="field">
+                    <label>Tipo de Post:</label>
+                    <p>Post</p>
+                </div>
+                <div class="field">
+                    <label>Referencias Visuales:</label>
+                    <p>Ejemplo1.jpg, Ejemplo2.jpg</p>
+                </div>
+                <div class="comments">
+                    <label>Comentarios:</label>
+                    <p>Por favor, considerar la temática del evento en el diseño.</p>
+                </div>
+                
+                <div class="actions">
+                    <button class="btn-send" onclick="sendRequest()">Enviar Solicitud</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- jQuery y Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script>
-        // Datos de ejemplo para las solicitudes de arte
-        const artRequests = [
-            {
-                title: "Solicitud de Arte 1",
-                type: "Interno",
-                deliveryDate: "2024-10-31",
-                area: "Admisiones",
-                requestDetails: {
-                    title: "Evento de Bienvenida",
-                    date: "2024-11-05",
-                    time: "10:00 AM",
-                    location: "Auditorio Principal",
-                    postType: "Historia, Post",
-                    referenceImage: "path/to/reference1.jpg",
-                    comments: "Por favor, mantener los colores corporativos."
-                },
-                borderClass: "border-primary", // Clase de borde
-            },
-            {
-                title: "Solicitud de Arte 2",
-                type: "Externo",
-                deliveryDate: "2024-11-05",
-                area: "Bienestar Estudiantil",
-                requestDetails: {
-                    title: "Charla de Salud Mental",
-                    date: "2024-11-10",
-                    time: "3:00 PM",
-                    location: "Salón 203",
-                    postType: "Historia",
-                    referenceImage: "path/to/reference2.jpg",
-                    comments: "Más enfoque en el mensaje positivo."
-                },
-                borderClass: "border-success", // Clase de borde
-            },
-            {
-                title: "Solicitud de Arte 3",
-                type: "Interno",
-                deliveryDate: "2024-11-07",
-                area: "Postgrado",
-                requestDetails: {
-                    title: "Seminario de Investigación",
-                    date: "2024-11-12",
-                    time: "2:00 PM",
-                    location: "Sala de Conferencias",
-                    postType: "Post",
-                    referenceImage: "path/to/reference3.jpg",
-                    comments: "Utilizar imágenes relacionadas con la investigación."
-                },
-                borderClass: "border-warning", // Clase de borde
-            },
-            {
-                title: "Solicitud de Arte 4",
-                type: "Externo",
-                deliveryDate: "2024-11-09",
-                area: "Académico",
-                requestDetails: {
-                    title: "Taller de Programación",
-                    date: "2024-11-15",
-                    time: "9:00 AM",
-                    location: "Laboratorio 1",
-                    postType: "Historia",
-                    referenceImage: "path/to/reference4.jpg",
-                    comments: "Incluir código de ejemplo en el arte."
-                },
-                borderClass: "border-info", // Clase de borde
-            },
-        ];
-
-        // Función para renderizar el accordion de solicitudes de arte
-        function renderArtRequests() {
-            const container = document.getElementById("artRequestsAccordion");
-            artRequests.forEach((request, index) => {
-                const card = document.createElement("div");
-                card.className = `card mb-3 ${request.borderClass}`; // Aplicar clase de borde
-                card.innerHTML = `
-                    <div class="card-header" id="heading${index}">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left text-black" type="button" data-toggle="collapse" data-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <span class="h5 font-weight-bold">${request.title}</span>
-                                    <div class="text-xs text-gray-500">Entrega: ${request.deliveryDate}</div>
-                                    <i class="fas fa-chevron-down ml-2 text-gray-300"></i>
-                                </div>
-                            </button>
-                        </h2>
-                    </div>
-                    
-                    <div id="collapse${index}" class="collapse" aria-labelledby="heading${index}" data-parent="#artRequestsAccordion">
-                        <div class="card-body">
-                            <p><strong>Tipo:</strong> ${request.type}</p>
-                            <p><strong>Fecha de entrega:</strong> ${request.deliveryDate}</p>
-                            <p><strong>Área:</strong> ${request.area}</p>
-                            <p><strong>Título:</strong> ${request.requestDetails.title}</p>
-                            <p><strong>Fecha del Evento:</strong> ${request.requestDetails.date}</p>
-                            <p><strong>Hora:</strong> ${request.requestDetails.time}</p>
-                            <p><strong>Ubicación:</strong> ${request.requestDetails.location}</p>
-                            <p><strong>Tipo de Post:</strong> ${request.requestDetails.postType}</p>
-                            <p><strong>Referencias Visuales:</strong><br><img src="${request.requestDetails.referenceImage}" alt="Referencia Visual" class="img-fluid"></p>
-                            <p><strong>Comentarios:</strong> ${request.requestDetails.comments}</p>
-                            
-                            <div class="form-group">
-                                <label for="fileUpload${index}">Agregar Entrega:</label>
-                                <input type="file" class="form-control-file" id="fileUpload${index}">
-                            </div>
-                            <button class="btn btn-light" onclick="uploadFile(${index})">Subir Archivo</button>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        // Función para manejar la carga de archivos
-        function uploadFile(index) {
-            const fileInput = document.getElementById(`fileUpload${index}`);
-            const file = fileInput.files[0];
-            if (file) {
-                alert(`Archivo "${file.name}" subido correctamente para la ${artRequests[index].title}.`);
-                // Aquí puedes agregar la lógica para subir el archivo a tu servidor
-                fileInput.value = ""; // Limpiar el input después de subir
-            } else {
-                alert("Por favor, selecciona un archivo para subir.");
+        // Función para desplegar/contraer la tarjeta
+        function toggleCard(header) {
+            const card = header.parentElement;
+            card.classList.toggle('expanded');
+            
+            const icon = header.querySelector('.fas.fa-chevron-down');
+            if (icon) {
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
             }
         }
 
-        // Renderizar las cards desplegables cuando se carga la página
-        window.onload = renderArtRequests;
+        // Función para enviar la solicitud (puede ser personalizada según la lógica)
+        function sendRequest() {
+            alert('Solicitud enviada con éxito.');
+        }
     </script>
 </body>
 </html>

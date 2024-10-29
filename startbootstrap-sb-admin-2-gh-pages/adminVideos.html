@@ -1,164 +1,170 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Solicitudes de Videos</title>
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Video</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
         body {
-            background-color: #fefefe; /* Color de fondo de la pantalla */
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #f0f4ff, #ffffff);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
-
-        .card {
-            border: none; /* Eliminar borde predeterminado */
-            border-top: 5px solid; /* Borde superior de 5px */
-            border-radius: 0.5rem; /* Bordes redondeados */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
-        }
-
-        .text-black {
-            color: black; /* Define una clase para el texto negro */
-        }
-
-        .card-header {
-            background-color: #f8f9fa; /* Color de fondo del encabezado de la tarjeta */
-        }
-
         h1 {
-            color: #020E5C; /* Color del título */
-            font-weight: 800; /* Hacer el texto más grueso */
+            font-weight: 700;
+            color: #002d62;
+            text-align: center;
+            margin-bottom: 20px;
         }
-
-        .content-container {
-            background-color: #CED9EE; /* Color del fondo después del título */
-            padding: 20px; /* Espaciado interno */
-            border-radius: 0.5rem; /* Bordes redondeados para el contenedor */
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 600px;
         }
-
-        .form-group {
-            margin-bottom: 15px; /* Espaciado entre campos del formulario */
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            font-weight: bold;
+            color: #2e5bff;
+            cursor: pointer;
+        }
+        .card-header i {
+            margin-right: 10px;
+        }
+        .card-content {
+            padding: 15px;
+            display: none;
+            color: #333;
+            border-top: 1px solid #e0e0e0;
+        }
+        .card.expanded .card-content {
+            display: block;
+        }
+        .field {
+            margin-bottom: 10px;
+        }
+        .field label {
+            font-weight: bold;
+            color: #333;
+        }
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+        .btn-confirm {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+        }
+        .btn-confirm:hover {
+            background-color: #218838;
+        }
+        .btn-confirm:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
         }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center">SOLICITUDES DE VIDEOS UPB</h1> <!-- Título de la página -->
-        <br>
-        <div class="content-container"> <!-- Contenedor con el color de fondo deseado -->
-            <div class="accordion" id="videoRequestsAccordion">
-                <!-- Las solicitudes de videos se insertarán aquí dinámicamente -->
+    <h1>Solicitud de Video</h1>
+    <div class="container">
+        <div class="card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <i class="fas fa-video"></i> Detalles de la Solicitud
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="card-content">
+                <!-- Información de la solicitud -->
+                <div class="field">
+                    <label>Área Solicitante:</label>
+                    <p>Admisiones</p>
+                </div>
+                <div class="field">
+                    <label>Formato:</label>
+                    <p>Vertical</p>
+                </div>
+                <div class="field">
+                    <label>Fecha de Entrega:</label>
+                    <p>2024-11-15</p>
+                </div>
+                <div class="field">
+                    <label>Requerimientos:</label>
+                    <p>Especificaciones técnicas y guion para el video.</p>
+                </div>
+                <div class="field">
+                    <label>¿Incluir imágenes?</label>
+                    <p>Sí</p>
+                </div>
+
+                <!-- Selección de Fecha -->
+                <div class="field">
+                    <label>Selecciona una de las fechas tentativas:</label>
+                    <select id="selectedDate" onchange="enableConfirmButton()">
+                        <option value="">-- Selecciona una fecha --</option>
+                        <option value="2024-11-01">2024-11-01</option>
+                        <option value="2024-11-02">2024-11-02</option>
+                    </select>
+                </div>
+
+                <!-- Botón de Confirmación -->
+                <div class="actions">
+                    <button class="btn-confirm" id="confirmButton" onclick="confirmDate()" disabled>Confirmar Fecha</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- jQuery y Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script>
-        // Datos de ejemplo para las solicitudes de videos
-        const videoRequests = [
-            {
-                title: "Solicitud de Video 1",
-                area: "Admisiones",
-                tentativeDates: ["2024-11-01", "2024-11-05"],
-                deliveryDate: "2024-11-10",
-                format: "Horizontal",
-                requirements: "Video de presentación de la universidad.",
-                imagesIncluded: true,
-                borderClass: "border-primary", // Clase de borde
-            },
-            {
-                title: "Solicitud de Video 2",
-                area: "Bienestar Estudiantil",
-                tentativeDates: ["2024-11-03", "2024-11-07"],
-                deliveryDate: "2024-11-15",
-                format: "Vertical",
-                requirements: "Video de actividades extracurriculares.",
-                imagesIncluded: false,
-                borderClass: "border-success", // Clase de borde
-            },
-            {
-                title: "Solicitud de Video 3",
-                area: "Postgrado",
-                tentativeDates: ["2024-11-02", "2024-11-08"],
-                deliveryDate: "2024-11-12",
-                format: "Horizontal",
-                requirements: "Entrevistas con profesores.",
-                imagesIncluded: true,
-                borderClass: "border-warning", // Clase de borde
-            },
-        ];
-
-        // Función para renderizar el accordion de solicitudes de videos
-        function renderVideoRequests() {
-            const container = document.getElementById("videoRequestsAccordion");
-            videoRequests.forEach((request, index) => {
-                const card = document.createElement("div");
-                card.className = `card mb-3 ${request.borderClass}`; // Aplicar clase de borde
-                card.innerHTML = `
-                    <div class="card-header" id="heading${index}">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left text-black" type="button" data-toggle="collapse" data-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}">
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <span class="h5 font-weight-bold">${request.title}</span>
-                                    <i class="fas fa-chevron-down ml-2 text-gray-300"></i>
-                                </div>
-                            </button>
-                        </h2>
-                    </div>
-                    
-                    <div id="collapse${index}" class="collapse" aria-labelledby="heading${index}" data-parent="#videoRequestsAccordion">
-                        <div class="card-body">
-                            <p><strong>Área:</strong> ${request.area}</p>
-                            <p><strong>Fechas Tentativas:</strong></p>
-                            <ul>
-                                ${request.tentativeDates.map(date => `<li>${date}</li>`).join('')}
-                            </ul>
-                            <p><strong>Formato:</strong> ${request.format}</p>
-                            <p><strong>Fecha de Entrega:</strong> ${request.deliveryDate}</p>
-                            <p><strong>Requerimientos:</strong> ${request.requirements}</p>
-                            <p><strong>Incluir Imágenes:</strong> ${request.imagesIncluded ? "Sí" : "No"}</p>
-                            
-                            <button class="btn btn-primary" onclick="confirmVideoRequest(${index})">Confirmar Video</button>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        // Función para confirmar la solicitud de video
-        function confirmVideoRequest(index) {
-            const request = videoRequests[index];
-            const selectedDate = prompt(`Selecciona una fecha de las siguientes: \n${request.tentativeDates.join('\n')}`);
-            if (request.tentativeDates.includes(selectedDate)) {
-                alert(`Solicitud de video "${request.title}" confirmada para la fecha: ${selectedDate}`);
-                // Aquí se puede agregar la lógica para enviar un correo de confirmación.
-                sendConfirmationEmail(request.title, selectedDate, request.area, request.requirements);
-            } else {
-                alert("Fecha no válida. Por favor, selecciona una fecha válida.");
+        // Función para desplegar/contraer la tarjeta
+        function toggleCard(header) {
+            const card = header.parentElement;
+            card.classList.toggle('expanded');
+            
+            const icon = header.querySelector('.fas.fa-chevron-down');
+            if (icon) {
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
             }
         }
 
-        // Función para simular el envío de un correo de confirmación
-        function sendConfirmationEmail(title, date, area, requirements) {
-            alert(`Correo de confirmación enviado:\nTítulo: ${title}\nFecha: ${date}\nÁrea: ${area}\nRequerimientos: ${requirements}`);
-            // Aquí puedes agregar la lógica real para enviar el correo.
+        // Habilitar el botón de confirmación cuando se selecciona una fecha
+        function enableConfirmButton() {
+            const selectedDate = document.getElementById('selectedDate').value;
+            const confirmButton = document.getElementById('confirmButton');
+            confirmButton.disabled = !selectedDate; // habilitar si hay una fecha seleccionada
         }
 
-        // Renderizar las cards desplegables cuando se carga la página
-        window.onload = renderVideoRequests;
+        // Función para confirmar la fecha seleccionada
+        function confirmDate() {
+            const selectedDate = document.getElementById('selectedDate').value;
+            alert('Fecha seleccionada para la entrega: ' + selectedDate);
+        }
     </script>
 </body>
 </html>
