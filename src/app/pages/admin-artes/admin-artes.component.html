@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Artes</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #f0f4ff, #ffffff);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            font-weight: 700;
+            color: #002d62;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            font-weight: bold;
+            color: #2e5bff;
+            cursor: pointer;
+        }
+        .card-header i {
+            margin-right: 10px;
+        }
+        .card-content {
+            padding: 15px;
+            color: #333;
+            border-top: 1px solid #e0e0e0;
+            display: none; /* Inicialmente oculto */
+        }
+        .card.expanded .card-content {
+            display: block; /* Muestra el contenido si la tarjeta está expandida */
+        }
+        .field {
+            margin-bottom: 10px;
+        }
+        .field label {
+            font-weight: bold;
+            color: #333;
+        }
+        .comments {
+            margin-top: 10px;
+        }
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+        .btn-send {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+        }
+        .btn-send:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Solicitud de Artes</h1>
+    <div class="container">
+        <div class="card">
+            <div class="card-header" onclick="toggleCard(this)">
+                <i class="fas fa-paint-brush"></i> Detalles de la Solicitud
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="card-content">
+                <div class="field">
+                    <label>Tipo de Solicitud:</label>
+                    <p>Interno</p>
+                </div>
+                <div class="field">
+                    <label>Fecha de Entrega:</label>
+                    <p>2024-11-15</p>
+                </div>
+                <div class="field">
+                    <label>Área:</label>
+                    <p>Admisiones</p>
+                </div>
+                <div class="field">
+                    <label>Título:</label>
+                    <p>Diseño de Poster para Evento</p>
+                </div>
+                <div class="field">
+                    <label>Fecha:</label>
+                    <p>2024-11-01</p>
+                </div>
+                <div class="field">
+                    <label>Hora:</label>
+                    <p>10:00 AM</p>
+                </div>
+                <div class="field">
+                    <label>Ubicación:</label>
+                    <p>Aula Magna</p>
+                </div>
+                <div class="field">
+                    <label>Tipo de Post:</label>
+                    <p>Post</p>
+                </div>
+                <div class="field">
+                    <label>Referencias Visuales:</label>
+                    <p>Ejemplo1.jpg, Ejemplo2.jpg</p>
+                </div>
+                <div class="comments">
+                    <label>Comentarios:</label>
+                    <p>Por favor, considerar la temática del evento en el diseño.</p>
+                </div>
+                
+                <div class="actions">
+                    <button class="btn-send" onclick="sendRequest()">Enviar</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        // Función para desplegar/contraer la tarjeta
+        function toggleCard(header) {
+            const card = header.parentElement;
+            card.classList.toggle('expanded');
+            
+            const icon = header.querySelector('.fas.fa-chevron-down');
+            if (icon) {
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            }
+        }
+
+        // Función para enviar la solicitud (puede ser personalizada según la lógica)
+        function sendRequest() {
+            alert('Solicitud enviada con éxito.');
+        }
+    </script>
+</body>
+</html>

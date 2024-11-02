@@ -1,0 +1,32 @@
+<div class="grid">
+	<div class="col-12">
+	    <div class="card">
+            <div class="login-panel-content">
+            <form [formGroup]="formGroup" (ngSubmit)="submitForm()">
+                <div class="p-fluid p-formgrid grid">
+                    <div class="col-12">
+                        <span class="p-float-label">
+                            <input id="email" type="email" pInputText formControlName="email" readonly>
+                            <label for="email"> Email</label>
+                        </span>
+                    </div>
+                    <div class="col-12">
+                        <span class="p-float-label">
+                            <label for="password"> Password </label>
+                            <span class="p-input-icon-right">
+                                <i [class]="this.iconClass" (click)="toggleShow()"></i>
+                                <input id="password" [type]="this.passwordType" pInputText formControlName="password">
+                            </span>
+                        </span>
+                    </div>
+                    <div class="col-12">
+                        <p-toast/>
+                        <input pButton pRipple type="submit" class="submit" value="Iniciar Sesión" (click)="submitForm()"  [disabled]="!formGroup.valid">
+                    </div>
+                </div>
+
+            </form>
+            </div>
+        </div>
+    </div>
+</div>

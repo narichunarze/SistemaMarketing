@@ -1,0 +1,69 @@
+<div class="col-12">
+    <div class="card">
+        <p-panel header="Opciones" [toggleable]="true" [collapsed]="true">
+            <form [formGroup]="formGroup" (ngSubmit)="submitForm()">
+                <div class="p-fluid p-formgrid grid">
+
+                    <div class="field col-12 md:col-4">
+                        <label for="icondisplay" class="font-bold block mb-2"> Fecha </label>
+                        <span class="p-input-icon-right">
+                            <p-calendar [(ngModel)]="date" showIcon="true" icon="pi pi-calendar" [formControl]="formGroup.controls['date']"
+                            dateFormat="dd-MM-yy"></p-calendar>
+                        </span>
+                    </div>
+
+                    <div class="field col-12 md:col-4">
+                        <label> Empresa </label>
+                        <p-dropdown [formControl]="formGroup.controls['idEnterprise']" [id]="'state'" [options]="enterpriseList" optionLabel="name" optionValue="id" (onChange)="getBranchOfficeCombo($event)" emptyMessage="No se encontraron empresas."></p-dropdown>
+                    </div>
+
+                    <div class="field col-12 md:col-4">
+                        <label> Sucursal </label>
+                        <p-dropdown [formControlName]="'idBranchOffice'" [id]="'state'" [options]="branchOfficeList" optionLabel="name" optionValue="id"></p-dropdown>
+                    </div>
+
+                </div>
+                <div class="p-fluid p-formgrid grid">
+
+                    <div class="field col-12 md:col-4">
+                        <button pButton type="submit" label="Buscar" [disabled]="!formGroup.valid"></button>
+                    </div>
+                </div>
+            </form>
+        </p-panel>
+    </div>
+</div>
+
+<div class="dashboard">
+    <div class="grid dashboard-grid">
+        
+     
+        <div class="col-12 xl:col-6 overview-box connections">
+            <div class="card">
+                <div class="card-title">Unidades mensuales vendidas hasta la fecha - {{this.datestring}}</div>
+                <div class="overview-numbers"> {{this.totalQuantity}} </div>
+                <div class="grid" style="display: flex; flex-direction: column; align-items: center;">
+                    <p-chart type="doughnut" [data]="pieData" [options]="pieOptions" [style]="{'width': '50%'}"></p-chart>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="col-12 xl:col-6 overview-box connections">
+            <div class="card">
+                <div class="card-title">Ganancias mensuales hasta la fecha - {{this.datestring}}</div>
+                <div class="overview-numbers"> Bs. {{this.totalPrices}} </div>
+                    <p-chart type="bar" [data]="barData" [options]="barOptions"></p-chart>
+            </div>
+        </div>
+
+        <div class="col-12 xl:col-12 overview-box">
+            <div class="card">
+                <div class="card-title">Unidad de productos mensuales vendidos hasta la fecha - {{this.datestring}}</div>
+                    <h5 style="display: flex; flex-direction: column; align-items: center;"> {{this.actualBranchOfficName}}</h5>
+                    <p-chart type="bar" [data]="barProductData" [options]="barOptions"></p-chart>
+            </div>
+        </div>
+
+    </div>
+</div>

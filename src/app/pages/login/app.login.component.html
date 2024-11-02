@@ -1,0 +1,40 @@
+<div class="login-body">
+    <div class="login-panel p-fluid">
+        <div class="login-panel-header">
+            <img src="assets/layout/images/myImg/coff.png">
+        </div>
+            <div class="login-panel-content">
+            <form autocomplete="off" [formGroup]="form">
+
+                <div class="grid">
+                    <div class="col-12">
+                        <h1>Coffe Manager</h1>
+                        <h2>Bienvenido, ¡tu próxima taza de café está por comenzar!</h2>
+                    </div>
+                    <div class="col-12">
+                        <span class="p-float-label">
+                            <input id="username" type="text" pInputText formControlName="email">
+                            <label for="username">Email</label>
+                            <small id="username-help" class="p-error" *ngIf="form.get('email').invalid && form.get('email').touched">
+                                Ingrese un correo electrónico válido.
+                            </small>
+                        </span>
+                    </div>
+                    <div class="col-12">
+                        <span class="p-float-label">
+                            <label for="password">Password</label>
+                            <span class="p-input-icon-right">
+                                <i [class]="this.iconClass" (click)="toggleShow()"></i>
+                                <input id="password" [type]="this.passwordType" pInputText formControlName="password">
+                            </span>
+                        </span>
+                    </div>
+                    <div class="col-12">
+                        <p-toast/>
+                        <input pButton pRipple type="submit" class="submit" value="Iniciar Sesión" (click)="submitForm()"  [disabled]="!form.valid">
+                    </div>
+                </div>
+            </form>
+            </div>
+    </div>
+</div>
