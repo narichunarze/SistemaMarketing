@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // apiUrl: 'http://192.168.0.26:8084'
-  apiUrl: 'http://192.168.0.29:8084'
+  apiUrl: 'http://localhost:8084'
 };
 
 /*

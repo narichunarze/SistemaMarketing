@@ -8,31 +8,12 @@ import { forkJoin } from 'rxjs';
     selector: 'app-menu',
     templateUrl: './app.menu.component.html'
 })
-export class AppMenuComponent implements OnInit {
+export class AppMenuComponent {
 
     model: any[];
     resourcesList: IRolResourceDto[];
 
-    constructor(public appMain: AppMainComponent,
-        private resourceService: ResourceService
-    ) {}
-
-    ngOnInit() {
-        this.getResources();
-    }
-
-    private getResources() {
-        let resourceObservable = this.resourceService.getResources();
-
-        forkJoin([resourceObservable]).subscribe(
-            ([resources]) => {
-                this.resourcesList = resources.data;
-                //Armar el menú
-                this.buildResourceMenu();
-            }
-        );
-    }
-
+   
     private buildResourceMenu() {
         this.model = [
             {label: 'Dashboard', icon: 'pi pi-home', routerLink: [localStorage.getItem('redirect')]},

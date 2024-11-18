@@ -165,6 +165,9 @@ import { PodcastComponent } from './pages/podcast/podcast.component';
 import { AdminPodcastComponent } from './pages/admin-podcast/admin-podcast.component';
 import { AdminEventosComponent } from './pages/admin-eventos/admin-eventos.component';
 import { EventosComponent } from './pages/eventos/eventos.component';
+import { UserInicioComponent } from './pages/user-inicio/user-inicio.component';
+import { AdminInicioComponent } from './pages/admin-inicio/admin-inicio.component';
+import { AdminRegistrarComponent } from './pages/admin-registrar/admin-registrar.component';
 
 @NgModule({
     imports: [
@@ -304,6 +307,15 @@ import { EventosComponent } from './pages/eventos/eventos.component';
         AdvancedFormComponent,
          SpinnerComponent,
          LoginAgainComponent,
+         UserInicioComponent,
+         AdminInicioComponent,
+         VideosComponent,
+         ArtesComponent,
+         AdminRegistrarComponent,
+      
+    
+        
+         
          
     ],
     providers: [ConfirmationService,

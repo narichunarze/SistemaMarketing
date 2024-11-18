@@ -37,7 +37,7 @@
 <body>
     <div class="container mt-5">
         <h2>Solicitud de Videos</h2>
-        <form action="submit_video_request.php" method="POST" enctype="multipart/form-data">
+        <form [formGroup]="formGroup">
             <div class="form-group">
                 <label for="area">Área</label>
                 <select class="form-control" id="area" name="area" required>
@@ -49,14 +49,14 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="p-fluid p-formgrid grid">
+            <div class="field col-12 md:col-12">
                 <label for="fechasTentativas">Fechas Tentativas de Grabación</label>
-                <div id="fechasContainer">
-                    <input type="date" class="form-control" name="fechaTentativa[]" required>
-                    <input type="date" class="form-control mt-2" name="fechaTentativa[]" required>
-                </div>
-                <button type="button" class="btn btn-secondary mt-2" onclick="agregarFecha()">Agregar Otra Fecha</button>
+               
+                   <p-calendar [(ngModel)]="rangeDates" selectionMode="multiple" [formControlName]="'fechasTentativasString'"  required></p-calendar>
+               
             </div>
+        </div>
 
             <!-- Nueva sección con color de fondo específico -->
             <div class="section-divider">
@@ -72,7 +72,8 @@
 
                 <div class="form-group">
                     <label for="fechaEntrega">Fecha de Entrega</label>
-                    <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
+                    <p-calendar [(ngModel)]="date" [formControlName]="'fechaEntrega'"  required></p-calendar>
+                    
                 </div>
 
                 <div class="form-group">

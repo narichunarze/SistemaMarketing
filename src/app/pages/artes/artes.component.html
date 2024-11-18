@@ -22,7 +22,7 @@
 <body>
     <div class="container mt-5">
         <h2>Solicitud de Artes</h2>
-        <form action="submit_art_request.php" method="POST">
+        <form [formGroup]="formGroup" (ngSubmit)="enviarFormulario()">
             <div class="form-group">
                 <label for="tipoSolicitud">Tipo de Solicitud</label>
                 <select class="form-control" id="tipoSolicitud" name="tipoSolicitud" required>
@@ -32,9 +32,13 @@
             </div>
 
             <div class="form-group">
-                <label for="fechaEntrega">Fecha de Entrega</label>
-                <input type="date" class="form-control" id="fechaEntrega" name="fechaEntrega" required>
+                <div class="p-fluid p-formgrid grid">
+                    <div class="field col-12 md:col-12">
+                        <label for="fechaEntrega">Fecha de Entrega</label>
+                           <p-calendar [(ngModel)]="date" [formControlName]="'fechaEntrega'"  required></p-calendar>
+                    </div>
             </div>
+        </div>
 
             <div class="form-group">
                 <label for="area">Área</label>
@@ -49,7 +53,7 @@
 
             <div class="form-group">
                 <label for="titulo">Título</label>
-                <input type="text" class="form-control" id="titulo" name="titulo" required>
+                <input type="text" class="form-control" name="titulo[]" required [formControlName]="'titulo'" >
             </div>
 
             <!-- Nueva sección con color de fondo específico -->
@@ -57,18 +61,16 @@
                 <div class="section-title">Detalles del Arte</div> <!-- Título para la nueva sección -->
                 
                 <div class="form-group">
-                    <label for="fechaEvento">Fecha</label>
-                    <input type="date" class="form-control" id="fecha" name="fecha" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="hora">Hora</label>
-                    <input type="time" class="form-control" id="hora" name="hora" required>
+                <div class="p-fluid p-formgrid grid">
+                    <div class="field col-12 md:col-12">
+                        <label for="fechasTentativasString">Fecha y hora</label>
+                           <p-calendar  showtime="true" [hourFormat]="24" [formControlName]="'fechasTentativasString'"  required></p-calendar>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="ubicacion">Ubicación</label>
-                    <input type="text" class="form-control" id="ubicacion" name="ubicacion" required>
+                    <input type="text" class="form-control" name="ubicacion[]" required [formControlName]="'ubicacion'" >
                 </div>
 
                 <div class="form-group">
@@ -89,9 +91,14 @@
                     <textarea class="form-control" id="comentarios" name="comentarios" rows="3"></textarea>
                 </div>
             </div>
+            </div>
 
             <button type="submit" class="btn btn-primary mt-4">Enviar Solicitud</button>
         </form>
+    </div>
+
+    <div class="col-6  flex justify-content-center">
+        <p-toast/>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -32,6 +32,17 @@ import {AppHelpComponent} from './pages/app.help.component';
 import {BlocksComponent} from './blocks/blocks/blocks.component';
 import { PagingFilterComponent } from './pages/utils/paging-filter/paging-filter';
 import { AuthClassGuard } from './auth--class.guard';
+import { UserInicioComponent } from './pages/user-inicio/user-inicio.component';
+import { AdminInicioComponent } from './pages/admin-inicio/admin-inicio.component';
+import { PodcastComponent } from './pages/podcast/podcast.component';
+import { ArtesComponent } from './pages/artes/artes.component';
+import { VideosComponent } from './pages/videos/videos.component';
+import { EventosComponent } from './pages/eventos/eventos.component';
+import { AdminArtesComponent } from './pages/admin-artes/admin-artes.component';
+import { AdminEventosComponent } from './pages/admin-eventos/admin-eventos.component';
+import { VideoAdminComponent } from './pages/admin-video/video-admin.component';
+import { AdminPodcastComponent } from './pages/admin-podcast/admin-podcast.component';
+import { AdminRegistrarComponent } from './pages/admin-registrar/admin-registrar.component';
 
 @NgModule({
     imports: [
@@ -40,10 +51,30 @@ import { AuthClassGuard } from './auth--class.guard';
                 path: 'dashboard', component: AppMainComponent,
                 children: [
                     {path: '', component: DashboardComponent, canActivate: [AuthClassGuard],},
-                     //Management
-                    
+                     //user index
+                     {path: 'user-index', component: UserInicioComponent , canActivate: [AuthClassGuard],},
+                     {path: 'user-artes', component: ArtesComponent,  canActivate: [AuthClassGuard],},
+                     {path: 'user-video', component: VideosComponent,  canActivate: [AuthClassGuard],},
+                     {path: 'user-evento', component: EventosComponent,  canActivate: [AuthClassGuard],},
+                     {path: 'user-podcast', component: PodcastComponent,  canActivate: [AuthClassGuard],},
+                     
+
+                     //admin index
+                     {path: 'admin-index', component: AdminInicioComponent ,canActivate: [AuthClassGuard],},
+                     {path: 'admin-artes', component: AdminArtesComponent, canActivate: [AuthClassGuard]},
+                     {path: 'admin-video', component: VideoAdminComponent ,canActivate: [AuthClassGuard],},
+                     {path: 'admin-evento', component: AdminEventosComponent ,canActivate: [AuthClassGuard],},
+                     {path: 'admin-podcast', component: AdminPodcastComponent ,canActivate: [AuthClassGuard],},
+                     {path: 'admin-registrar', component: AdminRegistrarComponent ,canActivate: [AuthClassGuard],},
+
+                     
+
+
+                     
+
 
                     //configuration settings
+
                   
 
                     //OTHERS
