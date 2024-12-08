@@ -37,7 +37,7 @@
 <body>
     <div class="container mt-5">
         <h2>Solicitud de Videos</h2>
-        <form [formGroup]="formGroup">
+        <form [formGroup]="formGroup" (ngSubmit)="enviarFormulario()">
             <div class="form-group">
                 <label for="area">Área</label>
                 <select class="form-control" id="area" name="area" required>
@@ -71,19 +71,36 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="fechaEntrega">Fecha de Entrega</label>
+                    <label for="fechaEntrega">Fecha de Entrega</label> <br>
                     <p-calendar [(ngModel)]="date" [formControlName]="'fechaEntrega'"  required></p-calendar>
-                    
                 </div>
 
                 <div class="form-group">
                     <label for="requerimientos">Requerimientos</label>
-                    <textarea class="form-control" id="requerimientos" name="requerimientos" rows="3" required></textarea>
+                    <textarea class="form-control" id="requerimientos" [formControlName]="'informacionAdicional'" rows="3" required></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="imagenes">Inserción de Imágenes</label>
-                    <input type="file" class="form-control" id="imagenes" name="imagenes[]" accept="image/*" multiple>
+                    <label for="referenciasVisuales">Referencias Visuales</label>
+                    <!-- <input type="file" class="form-control" id="referenciasVisuales" name="referenciasVisuales" accept="image/*"> -->
+                        <p-fileUpload 
+                            name="demo[]" 
+                            (onSelect)="onFileSelect($event)" 
+                            [showUploadButton]="false" 
+                            [multiple]="true" 
+                            invalidFileSizeMessageDetail="Capacidad máxima, 10MB por archivo."
+                            chooseLabel="Escoger"
+                            uploadLabel="Cargar"
+                            cancelLabel="Cancelar"
+                            maxFileSize="10000000">
+                                <ng-template pTemplate="content">
+                                    <ul *ngIf="uploadedFiles.length">
+                                        <li *ngFor="let file of uploadedFiles">
+                                            {{ file.name }} - {{ file.size }} bytes
+                                        </li>
+                                    </ul>
+                                </ng-template>
+                        </p-fileUpload>
                 </div>
             </div>
 
@@ -91,8 +108,14 @@
         </form>
     </div>
 
+    <div class="col-6  flex justify-content-center">
+        <p-toast/>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+

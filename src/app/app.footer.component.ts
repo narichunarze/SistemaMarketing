@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
         <div class="layout-footer">
             <div class="grid">
                 <div class="col">
-                    <span>Coffe Manager.</span>
+                    <span> Marketing UPB.</span>
                 </div>
             </div>
         </div>

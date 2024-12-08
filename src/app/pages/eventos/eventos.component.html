@@ -39,10 +39,10 @@
 <body>
     <div class="container mt-5">
         <h2>Cobertura de Evento</h2>
-        <form action="submit_event_coverage.php" method="POST">
+        <form [formGroup]="formGroup" (ngSubmit)="enviarFormulario()">
             <div class="form-group">
                 <label for="informacion">Información</label>
-                <textarea class="form-control" id="informacion" name="informacion" rows="3" required></textarea>
+                <textarea class="form-control" [formControlName]="'informacion'" id="informacion" name="informacion" rows="3" required></textarea>
             </div>
 
             <div class="form-group">
@@ -62,33 +62,33 @@
                 
                 <div class="form-group">
                     <label for="titulo_evento">Título del Evento</label>
-                    <input type="text" class="form-control" id="titulo_evento" name="titulo_evento" required>
+                    <input type="text" [formControlName]="'titulo'" id="titulo_evento" name="titulo_evento" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="fecha_evento">Fecha del Evento</label>
-                    <input type="date" class="form-control" id="fecha_evento" name="fecha_evento" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="hora">Hora</label>
-                    <input type="time" class="form-control" id="hora" name="hora" required>
+                    <label for="fechaEntrega">Fecha de Entrega</label> <br>
+                    <p-calendar [(ngModel)]="date" [formControlName]="'fechaEntrega'" showTime="true" [hourFormat]="24"></p-calendar>
+                    
                 </div>
 
                 <div class="form-group">
                     <label for="ubicacion">Ubicación</label>
-                    <input type="text" class="form-control" id="ubicacion" name="ubicacion" required>
+                    <input type="text" [formControlName]="'ubicacion'" id="ubicacion" name="ubicacion" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="informacion_adicional">Información Adicional</label>
-                    <textarea class="form-control" id="informacion_adicional" name="informacion_adicional" rows="3"></textarea>
+                    <label for="requerimientos">Requerimientos</label>
+                    <textarea class="form-control" id="requerimientos" [formControlName]="'informacionAdicional'" rows="3" required></textarea>
                 </div>
             </div>
             <!-- Fin de la sección con detalles del evento -->
 
             <button type="submit" class="btn btn-primary mt-4">Enviar Solicitud</button>
         </form>
+    </div>
+
+    <div class="col-6  flex justify-content-center">
+        <p-toast/>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -1,10 +1,117 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MessageService, ConfirmationService } from 'primeng/api';
+import { forkJoin } from 'rxjs';
+import { ColumnStructure, FormConfig } from 'src/app/demo/domain/columnDataStructure';
+import { PermissionService } from 'src/app/services/permission/permission.service';
+import { SolicitudService } from 'src/app/services/solicitudes/solicitudes.service';
 
 @Component({
   selector: 'app-admin-podcast',
   templateUrl: './admin-podcast.component.html',
+  providers: [MessageService],  
   styleUrls: ['./admin-podcast.component.scss']
 })
-export class AdminPodcastComponent {
+export class AdminPodcastComponent implements OnInit, OnDestroy {
 
+  pageableData: any;
+  tableStructure: ColumnStructure[];
+  gobalFilters;
+
+  createFormStructure: FormConfig;
+  isVisibleCreate: boolean = null;
+  actions: any = [];
+  submittedData: any;
+  formData;
+
+  constructor(private solicitudService: SolicitudService,
+    private router: Router,
+    private confirmationService: ConfirmationService,
+    private activatedRoute: ActivatedRoute,
+    private permissionService: PermissionService,
+    private messageService: MessageService,
+  ) {
+
+  }
+
+  ngOnInit(): void {
+    this.getEnterprisePermissions();
+
+    this.buildPageStructure();
+
+  }
+
+  ngOnDestroy(): void {
+  }
+
+  private getEnterprisesPageableData(params: any = { page: 0, size: 5, tipoSolicitud: 'podcast' }) {
+    let solicitudObservable = this.solicitudService.getSolicitudesPageable(params);
+
+    forkJoin([solicitudObservable]).subscribe(
+        ([solicitudes]) => {
+            this.pageableData = solicitudes.data;
+        }
+    );
+  }
+
+  handleActionTriggered(event: { action: string, data: any }) {
+    switch(event.action) {
+      case 'block':
+        // this.blockEnterprise(event.data);
+        break;
+
+      case 'view':
+        // this.buildEditEnterprise(event.data.id);
+        break;
+
+      }
+  }
+
+  getEnterprisePermissions() {
+     
+        this.actions = [];
+
+              this.getEnterprisesPageableData();
+
+              this.actions.unshift({icon: 'pi pi-trash', class: 'p-button-danger', actionName: 'block'})
+              this.actions.unshift({icon: 'pi pi-eye', class: 'p-button-warning', actionName: 'view'})
+          }
+
+  private buildPageStructure() {
+    this.tableStructure = [
+       // Nueva columna para acciones
+      {thead: 'Acciones', value: 'actions', ttype: 'actions', visible: true, hasFilter: false},
+      {thead: 'Id', value: 'id',ttype: 'number', visible: false, hasFilter: false, filterplaceholder: 'Buscar por id'},
+      {thead: 'Nombre usuario', value: 'nombreCompleto',ttype: 'text', visible: true, hasFilter: false, filterplaceholder: 'Buscar por nombre'},
+      {thead: 'Email', value: 'email',ttype: 'text', visible: true, hasFilter: false, filterplaceholder: 'Buscar por nombre'},
+      {thead: 'Tipo solicitud', value: 'nombreSolicitud',ttype: 'text', visible: true, hasFilter: false, filterplaceholder: 'Buscar por nombre'},
+      {thead: 'Fecha entrega', value: 'fecha',ttype: 'text', visible: true, hasFilter: false, filterplaceholder: 'Buscar por nombre'},
+      {thead: 'Estado', value: 'state',ttype: 'text', visible: true, hasFilter: false, filterplaceholder: 'Buscar por nombre'},  
+    ]
+
+    this.gobalFilters = this.tableStructure.filter(column => column.visible).map(column => column.value);
+  }
+
+  onPageChange(event: any) {
+
+    console.log("se ejecuta el onpagechange");
+    let params = { page: event.page, size: event.rows};
+
+    this.getEnterprisesPageableData(params);
+  }
+
+  // submitUpdateEnterprise(submittedData: IUpdateEnterprise) {
+  //   let createObservable = this.enterpriseService.updateEnterprise(submittedData);
+
+  //   forkJoin([createObservable]).subscribe({
+  //     next: ([updated]) => {
+  //       sessionStorage.removeItem('formData');
+  //       this.messageService.add({ severity: 'success', summary: 'Exitoso', detail: 'Empresa actualizada exitosamente.' });
+  //       this.ngOnInit(); 
+  //     },
+  //     error: (err) => {
+  //       this.messageService.add({ severity: 'error', summary: 'Error', detail: err.error.data.response });
+  //     }
+  //   })
+  // }
 }

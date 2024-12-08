@@ -59,4 +59,25 @@ export class SolicitudService {
   getBranchOfficesListByIdEnterprise(idEnterprise: string): Observable<any> {
     return this.httpClient.get<any>(`${this.apiUrl}/api/v1/branch-offices/list/${idEnterprise}`);
   }
+
+
+  getSolicitudesPageable(paramsObj: any): Observable<any> {
+    let params = new HttpParams;
+
+    for (let key in paramsObj) {
+      if (paramsObj.hasOwnProperty(key)) {
+        params = params.set(key, paramsObj[key]);
+      }
+    }
+
+    return this.httpClient.get<any>(`${this.apiUrl}/api/v1/solicitudes`,  { params });
+  }
+
+  getFilesByIdSolicitud(id: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}/api/v1/solicitudes/get-files/${id}`);
+  }
+
+  getCharInfo(): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}/api/v1/solicitudes/char-info`);
+  }
 }

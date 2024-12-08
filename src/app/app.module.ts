@@ -168,6 +168,7 @@ import { EventosComponent } from './pages/eventos/eventos.component';
 import { UserInicioComponent } from './pages/user-inicio/user-inicio.component';
 import { AdminInicioComponent } from './pages/admin-inicio/admin-inicio.component';
 import { AdminRegistrarComponent } from './pages/admin-registrar/admin-registrar.component';
+import { VideoAdminComponent } from './pages/admin-video/video-admin.component';
 
 @NgModule({
     imports: [
@@ -312,11 +313,12 @@ import { AdminRegistrarComponent } from './pages/admin-registrar/admin-registrar
          VideosComponent,
          ArtesComponent,
          AdminRegistrarComponent,
-      
-    
-        
-         
-         
+         EventosComponent,
+         PodcastComponent,
+         AdminArtesComponent,
+         AdminEventosComponent,
+         AdminPodcastComponent,
+         VideoAdminComponent
     ],
     providers: [ConfirmationService,
         {provide: LocationStrategy, useClass: HashLocationStrategy},

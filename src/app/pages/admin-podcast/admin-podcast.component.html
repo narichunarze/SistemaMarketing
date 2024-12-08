@@ -1,4 +1,22 @@
-<!DOCTYPE html>
+<paging-filter
+    (pageChangeTriggered)="onPageChange($event)"
+    *ngIf="this.tableStructure && this.pageableData" 
+    [title]="'Solicitudes'"
+    [principalLabel]="'Admin'"
+    [sucessorLabel]="'Podcast'"
+    [data]="this.pageableData"
+    [globalFilters]="gobalFilters"
+    [buildCreateForm]="createFormStructure"
+    [createVisible]="isVisibleCreate"
+    [actions]="actions"
+    [dataStructure]="this.tableStructure"
+    (actionTriggered)="handleActionTriggered($event)"
+    > </paging-filter>
+    <div class="col-6  flex justify-content-center">
+        <p-toast/>
+    </div>
+    <p-confirmDialog></p-confirmDialog>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -154,4 +172,4 @@
         }
     </script>
 </body>
-</html>
+</html> -->

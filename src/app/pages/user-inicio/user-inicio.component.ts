@@ -27,19 +27,18 @@ export class UserInicioComponent implements OnInit {
   } 
   //siempre muestra el evento de artes exitoso
   ngOnInit(): void {
-    let valor = sessionStorage.getItem('evento');
-    console.log('Recibido: ', valor);
-    if (valor === 'artes') {
+    let valor = sessionStorage.getItem('evento') ?? '';
+    if(!!valor){
       setTimeout(() => {
         this.messageService.add({
           severity: 'success',
           summary: 'Exitoso',
-          detail: 'Evento artes creado exitosamente.'
+          detail: `Evento ${valor} creado exitosamente.`
         });
       }, 500);  // 500 milisegundos (0.5 segundos)
-
-
+      sessionStorage.removeItem('evento');
     }
+    
   }
   
 

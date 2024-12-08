@@ -28,95 +28,12 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
+                            
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
                                         <img class="rounded-circle" src="../../../assets/layout/images/undraw_profile_1.svg" alt="...">
@@ -205,13 +122,6 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
 
                     <!-- Content Row -->
                     <div class="row">
@@ -317,7 +227,7 @@
                                 <div class="card">
                                     <div
                                         class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary">Últimos 6 Pedidos</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">Últimas solicitudes</h6>
                                         <div class="dropdown no-arrow">
                                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -327,28 +237,24 @@
                                     </div>
 
                                     <div class="card-body">
-                                        <ul class="list-group">
-                                            <!-- Suponiendo que 'pedidos' es un array de los últimos 5 pedidos -->
-                                            <li class="list-group-item">Pedido 1: <strong>Producto A</strong> -
-                                                <em>Fecha: 2024-10-20</em>
-                                            </li>
-                                            <li class="list-group-item">Pedido 2: <strong>Producto B</strong> -
-                                                <em>Fecha: 2024-10-21</em>
-                                            </li>
-                                            <li class="list-group-item">Pedido 3: <strong>Producto C</strong> -
-                                                <em>Fecha: 2024-10-22</em>
-                                            </li>
-                                            <li class="list-group-item">Pedido 4: <strong>Producto D</strong> -
-                                                <em>Fecha: 2024-10-23</em>
-                                            </li>
-                                            <li class="list-group-item">Pedido 5: <strong>Producto E</strong> -
-                                                <em>Fecha: 2024-10-24</em>
-                                            </li>
-                                            <li class="list-group-item">Pedido 6: <strong>Producto F</strong> -
-                                                <em>Fecha: 2024-10-24</em>
-                                            </li>
-
-                                        </ul>
+                                        <paging-filter
+                                            (pageChangeTriggered)="onPageChange($event)"
+                                            *ngIf="this.tableStructure && this.pageableData" 
+                                            [title]="'Solicitudes'"
+                                            [principalLabel]="'Admin'"
+                                            [sucessorLabel]="'Artes'"
+                                            [data]="this.pageableData"
+                                            [globalFilters]="gobalFilters"
+                                            [buildCreateForm]="createFormStructure"
+                                            [createVisible]="isVisibleCreate"
+                                            [actions]="actions"
+                                            [dataStructure]="this.tableStructure"
+                                            (actionTriggered)="handleActionTriggered($event)"
+                                            > </paging-filter>
+                                            <div class="col-6  flex justify-content-center">
+                                                <p-toast/>
+                                            </div>
+                                            <p-confirmDialog></p-confirmDialog>
                                     </div>
                                 </div>
                             </div>
@@ -363,10 +269,11 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <div class="mt-4 text-center small">
+                                    <div class="col-12 xl:col-6 overview-box connections">
+                                            <div class="overview-numbers"> Cantidad solicitudes últimas dos semanas: {{this.totalQuantity}} </div>
+                                            <div class="grid" style="display: flex; flex-direction: column; align-items: center;">
+                                                <p-chart type="doughnut" [data]="pieData" [options]="pieOptions" [style]="{'width': '50%'}"></p-chart>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
