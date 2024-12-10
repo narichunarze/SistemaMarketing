@@ -35,7 +35,7 @@
                 <div class="p-fluid p-formgrid grid">
                     <div class="field col-12 md:col-12">
                         <label for="fechaEntrega">Fecha de Entrega</label>
-                           <p-calendar [(ngModel)]="date" [formControlName]="'fechaEntrega'"  required></p-calendar>
+                           <p-calendar [formControlName]="'fechaEntrega'"  required></p-calendar>
                     </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
                 <div class="p-fluid p-formgrid grid">
                     <div class="field col-12 md:col-12">
                         <label for="fechasTentativasString">Fecha y hora</label>
-                           <p-calendar [(ngModel)]="date" [formControlName]="'fechasTentativasString'" showTime="true" [hourFormat]="24"></p-calendar>
+                           <p-calendar  [formControlName]="'fechasTentativasString'" showTime="true" [hourFormat]="24"></p-calendar>
                     </div>
                 </div>
 
