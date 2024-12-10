@@ -61,44 +61,63 @@
                 <div class="text-center mb-4">
                     <h1 class="h4 text-gray-900">Crear cuenta</h1>
                 </div>
-                <form>
+                <form  [formGroup]="formGroup" (ngSubmit)="enviarFormulario()">
                     <div class="form-group">
                         <label for="nombreUsuario">Nombre</label>
-                        <input type="text" class="form-control" id="nombreUsuario" placeholder="Nombre" required>
+                        <input type="text" class="form-control" id="nombreUsuario" placeholder="Nombre" [formControlName]="'name'" required>
                     </div>
                     <div class="form-group">
                         <label for="apellidoUsuario">Apellido</label>
-                        <input type="text" class="form-control" id="apellidoUsuario" placeholder="Apellido" required>
+                        <input type="text" class="form-control" id="apellidoUsuario" placeholder="Apellido" [formControlName]="'lastname'" required>
                     </div>
                     <div class="form-group">
                         <label for="emailUsuario">Email Corporativo</label>
-                        <input type="email" class="form-control" id="emailUsuario" placeholder="Email Corporativo" required>
+                        <input type="email" class="form-control" id="emailUsuario" placeholder="Email Corporativo" [formControlName]="'email'" required>
                     </div>
                     <div class="form-group">
                         <label for="usuarioPassword">Contraseña</label>
-                        <input type="password" class="form-control" id="usuarioPassword" placeholder="Contraseña" required>
+                        
+                        <input type="password" class="form-control" id="usuarioPassword" placeholder="Contraseña"  [formControlName]="'password'" required>
+
+                        <small id="username-help" class="p-error" *ngIf="formGroup.get('password').invalid && formGroup.get('password').touched">
+                            Requerido.
+                        </small>
                     </div>
                     <div class="form-group">
                         <label for="usuarioRepetirPassword">Vuelva a escribir su contraseña</label>
-                        <input type="password" class="form-control" id="usuarioRepetirPassword" placeholder="Confirmar Contraseña" required>
+                        <input type="password" class="form-control" id="usuarioRepetirPassword" placeholder="Confirmar Contraseña" [formControlName]="'passwordComfir'" required>
+                    
+                     
+                        <small id="username-help" class="p-error" *ngIf="formGroup.value.passwordComfir != formGroup.value.password">
+                            Las contraseñas no coinciden.
+                        </small>
                     </div>
                     <div class="form-group">
-                        <label for="rolUsuario">Rol</label>
-                        <select class="form-control" id="rolUsuario" required>
-                            <option value="" disabled selected>Seleccione su rol</option>
-                            <option value="usuario">Usuario</option>
-                            <option value="administrador">Administrador</option>
-                        </select>
+                        <label> Rol </label> <br>
+                        <p-dropdown [formControlName]="'idRol'" [id]="'idRol'" [options]="permissions" optionLabel="name" optionValue="code"></p-dropdown>
+                    
+                        <small id="username-help" class="p-error" *ngIf="formGroup.get('idRol').invalid && formGroup.get('idRol').touched">
+                            Requerido.
+                        </small>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Registrar Cuenta</button>
+                    <input pButton type="submit" class="btn btn-primary btn-block" value="Registrar cuenta" [disabled]="!formGroup.valid || formGroup.value.passwordComfir != formGroup.value.password">
+
                 </form>
             </div>
         </div>
     </div>
 
+
+
     <!-- Bootstrap core JavaScript-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 
 </html>
+
+
+<div class="col-6  flex justify-content-center">
+    <p-toast/>
+</div>

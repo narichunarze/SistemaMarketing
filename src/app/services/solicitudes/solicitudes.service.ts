@@ -80,4 +80,8 @@ export class SolicitudService {
   getCharInfo(): Observable<any> {
     return this.httpClient.get<any>(`${this.apiUrl}/api/v1/solicitudes/char-info`);
   }
+
+  getUserCharInfo(): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}/api/v1/solicitudes/user-char-info`);
+  }
 }

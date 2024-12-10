@@ -27,7 +27,7 @@ export class UserService {
     return this.httpClient.get<any>(`${this.apiUrl}/api/v1/users`,  { params });
   }
 
-  createUser(userObj: ICreateUser): Observable<any> {
+  createUser(userObj: any): Observable<any> {
     return this.httpClient.post(`${this.apiUrl}/api/v1/users`, userObj);
   }
 

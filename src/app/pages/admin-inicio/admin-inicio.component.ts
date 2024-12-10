@@ -67,15 +67,23 @@ export class AdminInicioComponent {
 
   constructor(private solicitudService: SolicitudService,
     private router: Router,
+    private messageService: MessageService,
   ) {
 
   }
 
   ngOnInit(): void {
     this.buildPageStructure();
-    this.getEnterprisesPageableData();
+    this.getSolicitudesData();
     this.getCharInfoValues();
 
+    let valor = sessionStorage.getItem('evento') ?? '';
+    if(!!valor){
+      setTimeout(() => {
+        this.messageService.add({ severity: 'success', summary: 'Exitoso', detail: 'Usuario creado exitosamente.' });
+      }, 500);  // 500 milisegundos (0.5 segundos)
+      sessionStorage.removeItem('evento');
+    }
   }
 
   ngOnDestroy(): void {
@@ -128,7 +136,7 @@ export class AdminInicioComponent {
     };
   }
 
-  private getEnterprisesPageableData(params: any = { page: 0, size: 5, tipoSolicitud: '' }) {
+  private getSolicitudesData(params: any = { page: 0, size: 5, tipoSolicitud: '' }) {
     let solicitudObservable = this.solicitudService.getSolicitudesPageable(params);
 
     forkJoin([solicitudObservable]).subscribe(
@@ -143,7 +151,7 @@ export class AdminInicioComponent {
     console.log("se ejecuta el onpagechange");
     let params = { page: event.page, size: event.rows};
 
-    this.getEnterprisesPageableData(params);
+    this.getSolicitudesData(params);
   }
 
   private buildPageStructure() {
