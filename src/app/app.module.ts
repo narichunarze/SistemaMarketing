@@ -169,6 +169,10 @@ import { UserInicioComponent } from './pages/user-inicio/user-inicio.component';
 import { AdminInicioComponent } from './pages/admin-inicio/admin-inicio.component';
 import { AdminRegistrarComponent } from './pages/admin-registrar/admin-registrar.component';
 import { VideoAdminComponent } from './pages/admin-video/video-admin.component';
+import { ArtesInfoComponent } from './pages/admin-artes/arte-info/artes-info.component';
+import { VideosInfoComponent } from './pages/admin-video/video-info/videos-info.component';
+import { PodcastInfoComponent } from './pages/admin-podcast/podcast-info/podcast-info.component';
+import { EventosInfoComponent } from './pages/admin-eventos/eventos-info/eventos-info.component';
 
 @NgModule({
     imports: [
@@ -318,7 +322,11 @@ import { VideoAdminComponent } from './pages/admin-video/video-admin.component';
          AdminArtesComponent,
          AdminEventosComponent,
          AdminPodcastComponent,
-         VideoAdminComponent
+         VideoAdminComponent,
+         ArtesInfoComponent,
+         VideosInfoComponent,
+         PodcastInfoComponent,
+         EventosInfoComponent
     ],
     providers: [ConfirmationService,
         {provide: LocationStrategy, useClass: HashLocationStrategy},

@@ -59,8 +59,9 @@ export class VideoAdminComponent implements OnInit, OnDestroy {
 
   handleActionTriggered(event: { action: string, data: any }) {
     switch(event.action) {
-      case 'block':
-        // this.blockEnterprise(event.data);
+      case 'view':
+        sessionStorage.setItem('id', event.data.id);
+        this.router.navigate(['dashboard/admin-videos-info']);
         break;
 
       case 'download':

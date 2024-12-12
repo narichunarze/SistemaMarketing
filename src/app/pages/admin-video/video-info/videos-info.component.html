@@ -35,12 +35,12 @@
     </script>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container mt-5" *ngIf="this.solicitudData">
         <h2>Solicitud de Videos</h2>
-        <form [formGroup]="formGroup" (ngSubmit)="enviarFormulario()">
+        <form [formGroup]="formGroup">
             <div class="form-group">
                 <label for="area">Área</label>
-                <select class="form-control" id="area" name="area"   [formControlName]="'area'" required>
+                <select class="form-control" id="area" name="area" [formControlName]="'area'" required>
                     <option value="admisiones">Admisiones</option>
                     <option value="bienestar_estudiantil">Bienestar Estudiantil</option>
                     <option value="postgrado">Postgrado</option>
@@ -53,7 +53,7 @@
             <div class="field col-12 md:col-12">
                 <label for="fechasTentativas">Fechas Tentativas de Grabación</label>
                
-                   <p-calendar [(ngModel)]="rangeDates" selectionMode="multiple" [formControlName]="'fechasTentativasString'"  required></p-calendar>
+                   <p-calendar  selectionMode="multiple" [formControlName]="'fechasTentativasString'"  required></p-calendar>
                
             </div>
         </div>
@@ -63,7 +63,7 @@
                 <div class="section-title">Detalles del Video</div> <!-- Título para la nueva sección -->
 
                 <div class="form-group">
-                    <label for="formato">Formato</label>
+                    <label for="formato" >Formato</label>
                     <select class="form-control" id="formato" name="formato" [formControlName]="'tipoPost'" required>
                         <option value="vertical">Vertical</option>
                         <option value="horizontal">Horizontal</option>
@@ -72,7 +72,7 @@
 
                 <div class="form-group">
                     <label for="fechaEntrega">Fecha de Entrega</label> <br>
-                    <p-calendar [(ngModel)]="date" [formControlName]="'fechaEntrega'"  required></p-calendar>
+                    <p-calendar [formControlName]="'fechaEntrega'"  required></p-calendar>
                 </div>
 
                 <div class="form-group">
@@ -80,31 +80,8 @@
                     <textarea class="form-control" id="requerimientos" [formControlName]="'informacionAdicional'" rows="3" required></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="referenciasVisuales">Referencias Visuales</label>
-                    <!-- <input type="file" class="form-control" id="referenciasVisuales" name="referenciasVisuales" accept="image/*"> -->
-                        <p-fileUpload 
-                            name="demo[]" 
-                            (onSelect)="onFileSelect($event)" 
-                            [showUploadButton]="false" 
-                            [multiple]="true" 
-                            invalidFileSizeMessageDetail="Capacidad máxima, 10MB por archivo."
-                            chooseLabel="Escoger"
-                            uploadLabel="Cargar"
-                            cancelLabel="Cancelar"
-                            maxFileSize="10000000">
-                                <ng-template pTemplate="content">
-                                    <ul *ngIf="uploadedFiles.length">
-                                        <li *ngFor="let file of uploadedFiles">
-                                            {{ file.name }} - {{ file.size }} bytes
-                                        </li>
-                                    </ul>
-                                </ng-template>
-                        </p-fileUpload>
-                </div>
             </div>
 
-            <input pButton type="submit" class="btn btn-primary btn-block" value="Enviar Solicitud" [disabled]="!formGroup.valid">
         </form>
     </div>
 

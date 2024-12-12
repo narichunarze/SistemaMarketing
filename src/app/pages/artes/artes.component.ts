@@ -30,12 +30,12 @@ export class ArtesComponent implements OnInit {
   ngOnInit(): void {
     this.formGroup = new FormGroup({
       fechaEntrega: new FormControl('', [Validators.required]),
-      area: new FormControl('Admisiones', [Validators.required]),
+      area: new FormControl('admisiones', [Validators.required]),
       titulo: new FormControl('', [Validators.required]),
       ubicacion: new FormControl('', [Validators.required]),
-      tipoPost: new FormControl('Historia', [Validators.required]),
+      tipoPost: new FormControl('historia', [Validators.required]),
       informacionAdicional: new FormControl('ComentarioAdicionalVacio', [Validators.required]),
-      tipoSolicitud: new FormControl('Interno', [Validators.required]),
+      tipoSolicitud: new FormControl('interno', [Validators.required]),
 
 
 

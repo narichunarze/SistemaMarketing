@@ -43,6 +43,10 @@ import { AdminEventosComponent } from './pages/admin-eventos/admin-eventos.compo
 import { VideoAdminComponent } from './pages/admin-video/video-admin.component';
 import { AdminPodcastComponent } from './pages/admin-podcast/admin-podcast.component';
 import { AdminRegistrarComponent } from './pages/admin-registrar/admin-registrar.component';
+import { ArtesInfoComponent } from './pages/admin-artes/arte-info/artes-info.component';
+import { VideosInfoComponent } from './pages/admin-video/video-info/videos-info.component';
+import { PodcastInfoComponent } from './pages/admin-podcast/podcast-info/podcast-info.component';
+import { EventosInfoComponent } from './pages/admin-eventos/eventos-info/eventos-info.component';
 
 @NgModule({
     imports: [
@@ -62,9 +66,13 @@ import { AdminRegistrarComponent } from './pages/admin-registrar/admin-registrar
                      //admin index
                      {path: 'admin-index', component: AdminInicioComponent ,canActivate: [AuthClassGuard],},
                      {path: 'admin-artes', component: AdminArtesComponent, canActivate: [AuthClassGuard]},
+                      {path: 'admin-artes-info', component: ArtesInfoComponent, canActivate: [AuthClassGuard]},
                      {path: 'admin-video', component: VideoAdminComponent ,canActivate: [AuthClassGuard],},
+                        {path: 'admin-videos-info', component: VideosInfoComponent, canActivate: [AuthClassGuard]},
                      {path: 'admin-evento', component: AdminEventosComponent ,canActivate: [AuthClassGuard],},
+                        {path: 'admin-eventos-info', component: EventosInfoComponent, canActivate: [AuthClassGuard]},
                      {path: 'admin-podcast', component: AdminPodcastComponent ,canActivate: [AuthClassGuard],},
+                        {path: 'admin-podcasts-info', component: PodcastInfoComponent, canActivate: [AuthClassGuard]},
                      {path: 'admin-registrar', component: AdminRegistrarComponent ,canActivate: [AuthClassGuard],},
 
                      

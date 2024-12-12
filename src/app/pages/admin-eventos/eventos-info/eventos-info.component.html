@@ -37,9 +37,9 @@
     </script>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container mt-5" *ngIf="solicitudData">
         <h2>Cobertura de Evento</h2>
-        <form [formGroup]="formGroup" (ngSubmit)="enviarFormulario()">
+        <form [formGroup]="formGroup">
             <div class="form-group">
                 <label for="informacion">Información</label>
                 <textarea class="form-control" [formControlName]="'informacion'" id="informacion" name="informacion" rows="3" required></textarea>
@@ -67,7 +67,7 @@
 
                 <div class="form-group">
                     <label for="fechaEntrega">Fecha de Entrega</label> <br>
-                    <p-calendar [(ngModel)]="date" [formControlName]="'fechaEntrega'" showTime="true" [hourFormat]="24"></p-calendar>
+                    <p-calendar [formControlName]="'fechaEntrega'" showTime="true" [hourFormat]="24"></p-calendar>
                     
                 </div>
 
@@ -83,7 +83,6 @@
             </div>
             <!-- Fin de la sección con detalles del evento -->
 
-            <button type="submit" class="btn btn-primary mt-4">Enviar Solicitud</button>
         </form>
     </div>
 

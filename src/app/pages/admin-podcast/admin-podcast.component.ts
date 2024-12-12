@@ -56,13 +56,10 @@ export class AdminPodcastComponent implements OnInit, OnDestroy {
 
   handleActionTriggered(event: { action: string, data: any }) {
     switch(event.action) {
-      case 'block':
-        // this.blockEnterprise(event.data);
-        break;
-
-      case 'view':
-        // this.buildEditEnterprise(event.data.id);
-        break;
+        case 'view':
+          sessionStorage.setItem('id', event.data.id);
+          this.router.navigate(['dashboard/admin-podcasts-info']);
+          break;
 
       }
   }
@@ -73,7 +70,6 @@ export class AdminPodcastComponent implements OnInit, OnDestroy {
 
               this.getEnterprisesPageableData();
 
-              this.actions.unshift({icon: 'pi pi-trash', class: 'p-button-danger', actionName: 'block'})
               this.actions.unshift({icon: 'pi pi-eye', class: 'p-button-warning', actionName: 'view'})
           }
 
