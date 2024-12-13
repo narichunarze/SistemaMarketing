@@ -140,6 +140,7 @@ export class VideoAdminComponent implements OnInit, OnDestroy {
       {thead: 'Acciones', value: 'actions', ttype: 'actions', visible: true, hasFilter: false},
       {thead: 'Id', value: 'id',ttype: 'number', visible: false, hasFilter: false, filterplaceholder: 'Buscar por id'},
       {thead: 'Nombre usuario', value: 'nombreCompleto',ttype: 'text', visible: true, hasFilter: false, filterplaceholder: 'Buscar por nombre'},
+      {thead: 'Email', value: 'email',ttype: 'text', visible: true, hasFilter: false, filterplaceholder: 'Buscar por nombre'},
       {thead: 'Tipo solicitud', value: 'nombreSolicitud',ttype: 'text', visible: true, hasFilter: false, filterplaceholder: 'Buscar por nombre'},
       {thead: 'Fecha entrega', value: 'fecha',ttype: 'text', visible: true, hasFilter: false, filterplaceholder: 'Buscar por nombre'},
       {thead: 'Estado', value: 'state',ttype: 'text', visible: true, hasFilter: false, filterplaceholder: 'Buscar por nombre'},  
